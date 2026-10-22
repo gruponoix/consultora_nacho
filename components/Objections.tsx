@@ -31,7 +31,7 @@ export default function Objections() {
         <div className="obj-aside reveal">
           <div className="media">
             <Image
-              src="/images/hero-sunset.jpg"
+              src="/images/reception.jpg"
               alt="Recepción de hotel con detalle cálido"
               fill
               sizes="(max-width: 1080px) 0px, 40vw"

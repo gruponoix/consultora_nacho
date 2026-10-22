@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 function animateCount(el: HTMLElement) {
   const target = parseFloat(el.getAttribute("data-target") || "0");
@@ -19,6 +20,8 @@ function animateCount(el: HTMLElement) {
 }
 
 export default function Interactions() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const observers: IntersectionObserver[] = [];
@@ -129,7 +132,7 @@ export default function Interactions() {
       if (onAnchorClick) document.removeEventListener("click", onAnchorClick);
       lenis?.destroy();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

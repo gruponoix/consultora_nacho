@@ -47,7 +47,7 @@ export default function ContactForm() {
           </div>
           <h3>¡Solicitud recibida!</h3>
           <p>
-            Gracias por confiar en Aurum. Revisaremos tu hotel y te contactaremos en menos de 48
+            Gracias por confiar en Keitel. Revisaremos tu hotel y te contactaremos en menos de 48
             horas.
           </p>
         </div>

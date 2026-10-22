@@ -11,11 +11,11 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const SITE_URL = "https://www.aurumhotelconsulting.com";
+const SITE_URL = "https://www.keitelrevenue.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Aurum Hotel Consulting · Consultoría y gestión hotelera premium en Málaga",
+  title: "Keitel Revenue · Consultoría y gestión hotelera premium en Málaga",
   description:
     "Consultora hotelera premium. Externalización, consultoría y gestión operativa para hoteles independientes y cadenas que buscan aumentar ingresos, optimizar costes y mejorar resultados. Solicita tu diagnóstico gratuito.",
   keywords: [
@@ -26,16 +26,16 @@ export const metadata: Metadata = {
     "consultor hotelero Málaga",
     "aumentar ingresos hotel",
   ],
-  authors: [{ name: "Aurum Hotel Consulting" }],
+  authors: [{ name: "Keitel Revenue" }],
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
-    title: "Aurum Hotel Consulting · Consultoría hotelera premium",
+    title: "Keitel Revenue · Consultoría hotelera premium",
     description:
       "Impulsamos la rentabilidad y el crecimiento de hoteles independientes y cadenas hoteleras.",
     locale: "es_ES",
-    siteName: "Aurum Hotel Consulting",
+    siteName: "Keitel Revenue",
     url: SITE_URL,
   },
 };
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Aurum Hotel Consulting",
+  name: "Keitel Revenue",
   description:
     "Consultora hotelera premium especializada en externalización, consultoría y gestión operativa para hoteles independientes y cadenas hoteleras.",
   areaServed: "Internacional",

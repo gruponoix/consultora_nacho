@@ -9,7 +9,7 @@ const VALUES = [
 
 export default function Lamp() {
   return (
-    <section className="lamp" id="nosotros" aria-labelledby="nosotros-h">
+    <section className="lamp" aria-label="Nuestro fundador">
       <div className="lamp__stage">
         <div className="lamp__light" aria-hidden="true">
           <div className="beam beam--l" />
@@ -32,12 +32,10 @@ export default function Lamp() {
               </div>
             </div>
             <div>
-              <p className="eyebrow">Nosotros</p>
-              <h2 id="nosotros-h">Estrategia hotelera con nombre propio</h2>
               <p className="lamp__name">Ignacio Góngora Espada</p>
-              <p className="lamp__role">CEO &amp; Fundador · Aurum Hotel Consulting · Málaga</p>
+              <p className="lamp__role">CEO &amp; Fundador · Keitel Revenue · Málaga</p>
               <p className="lamp__bio">
-                Aurum nace de la convicción de que cada hotel tiene un potencial sin explotar. Con
+                Keitel nace de la convicción de que cada hotel tiene un potencial sin explotar. Con
                 más de una década dirigiendo y asesorando hoteles, acompañamos a propietarios y
                 cadenas para convertir buenas instalaciones en negocios verdaderamente rentables,
                 combinando rigor analítico con una mirada humana de la hospitalidad.

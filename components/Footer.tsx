@@ -8,17 +8,17 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <span className="logo">
-              AURUM <small>Hotel Consulting</small>
+              KEITEL <small>Revenue</small>
             </span>
             <p>
               Consultoría, externalización y gestión operativa para hoteles que quieren crecer con
               criterio y rentabilidad.
             </p>
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn de Aurum Hotel Consulting">
+              <a href="#" aria-label="LinkedIn de Keitel Revenue">
                 <LinkedIn />
               </a>
-              <a href="#" aria-label="Instagram de Aurum Hotel Consulting">
+              <a href="#" aria-label="Instagram de Keitel Revenue">
                 <Instagram />
               </a>
             </div>
@@ -44,14 +44,14 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Contacto</h4>
             <ul>
-              <li><a href="mailto:hola@aurumhotelconsulting.com">hola@aurumhotelconsulting.com</a></li>
+              <li><a href="mailto:hola@keitelrevenue.com">hola@keitelrevenue.com</a></li>
               <li><a href="#">Málaga, España</a></li>
               <li><a href="#contacto">Diagnóstico gratuito</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {year} Aurum Hotel Consulting · Todos los derechos reservados.</span>
+          <span>© {year} Keitel Revenue · Todos los derechos reservados.</span>
           <span>
             <a href="#">Aviso legal</a> · <a href="#">Política de privacidad</a> ·{" "}
             <a href="#">Cookies</a>

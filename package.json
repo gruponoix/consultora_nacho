@@ -1,8 +1,8 @@
 {
-  "name": "aurum-hotel-consulting",
+  "name": "keitel-revenue",
   "version": "1.0.0",
   "private": true,
-  "description": "Aurum Hotel Consulting — consultoría y gestión hotelera premium",
+  "description": "Keitel Revenue — consultoría y gestión hotelera premium",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

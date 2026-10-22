@@ -33,9 +33,9 @@ export default function Lamp() {
             </div>
             <div>
               <p className="lamp__name">Ignacio Góngora Espada</p>
-              <p className="lamp__role">CEO &amp; Fundador · Keitel Revenue · Málaga</p>
+              <p className="lamp__role">CEO &amp; Fundador · Kietel Revenue · Málaga</p>
               <p className="lamp__bio">
-                Keitel nace de la convicción de que cada hotel tiene un potencial sin explotar. Con
+                Kietel nace de la convicción de que cada hotel tiene un potencial sin explotar. Con
                 más de una década dirigiendo y asesorando hoteles, acompañamos a propietarios y
                 cadenas para convertir buenas instalaciones en negocios verdaderamente rentables,
                 combinando rigor analítico con una mirada humana de la hospitalidad.

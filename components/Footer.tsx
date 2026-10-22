@@ -8,17 +8,17 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <span className="logo">
-              KEITEL <small>Revenue</small>
+              KIETEL <small>Revenue</small>
             </span>
             <p>
               Consultoría, externalización y gestión operativa para hoteles que quieren crecer con
               criterio y rentabilidad.
             </p>
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn de Keitel Revenue">
+              <a href="#" aria-label="LinkedIn de Kietel Revenue">
                 <LinkedIn />
               </a>
-              <a href="#" aria-label="Instagram de Keitel Revenue">
+              <a href="#" aria-label="Instagram de Kietel Revenue">
                 <Instagram />
               </a>
             </div>
@@ -36,7 +36,6 @@ export default function Footer() {
             <h4>Empresa</h4>
             <ul>
               <li><a href="#nosotros">Nosotros</a></li>
-              <li><a href="#casos">Casos de éxito</a></li>
               <li><a href="#blog">Blog</a></li>
               <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -51,7 +50,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {year} Keitel Revenue · Todos los derechos reservados.</span>
+          <span>© {year} Kietel Revenue · Todos los derechos reservados.</span>
           <span>
             <a href="#">Aviso legal</a> · <a href="#">Política de privacidad</a> ·{" "}
             <a href="#">Cookies</a>

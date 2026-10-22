@@ -7,9 +7,9 @@ import Lamp from "@/components/Lamp";
 import { Arrow } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Nosotros · Keitel Revenue",
+  title: "Nosotros · Kietel Revenue",
   description:
-    "Conoce a Keitel Revenue y a su fundador, Ignacio Góngora. Más de una década convirtiendo hoteles en negocios rentables, con rigor analítico y mirada humana.",
+    "Conoce a Kietel Revenue y a su fundador, Ignacio Góngora. Más de una década convirtiendo hoteles en negocios rentables, con rigor analítico y mirada humana.",
   alternates: { canonical: "/nosotros" },
 };
 
@@ -22,7 +22,7 @@ export default function NosotrosPage() {
           <div className="svc-hero__bg">
             <Image
               src="/images/pexels-quang-nguyen-vinh-222549-26729558.jpg"
-              alt="Keitel Revenue"
+              alt="Kietel Revenue"
               fill
               priority
               sizes="100vw"
@@ -34,7 +34,7 @@ export default function NosotrosPage() {
           <div className="wrap svc-hero__content">
             <h1 className="svc-hero__title">Nosotros</h1>
             <p className="svc-hero__lead">
-              Detrás de Keitel hay más de una década dirigiendo y asesorando hoteles. Esta es la
+              Detrás de Kietel hay más de una década dirigiendo y asesorando hoteles. Esta es la
               visión, los valores y la persona que la hacen posible.
             </p>
           </div>

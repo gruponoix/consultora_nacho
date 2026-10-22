@@ -8,7 +8,6 @@ import { SERVICES } from "@/lib/services";
 const LINKS = [
   { href: "#top", label: "Inicio" },
   { href: "#servicios", label: "Servicios" },
-  { href: "#casos", label: "Casos de éxito" },
   { href: "#nosotros", label: "Nosotros" },
   { href: "#blog", label: "Blog" },
   { href: "#contacto", label: "Contacto" },
@@ -52,8 +51,8 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
         id="top"
       >
         <div className="wrap header__bar">
-          <a href={to("#top")} className="logo" aria-label="Keitel Revenue — Inicio">
-            KEITEL <small>Revenue</small>
+          <a href={to("#top")} className="logo" aria-label="Kietel Revenue — Inicio">
+            KIETEL <small>Revenue</small>
           </a>
           <nav className="nav" aria-label="Navegación principal">
             {LINKS.map((l) =>
@@ -110,7 +109,7 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
         aria-hidden={!open}
       >
         <div className="drawer__top">
-          <span className="logo">KEITEL</span>
+          <span className="logo">KIETEL</span>
           <button className="drawer__close" aria-label="Cerrar menú" onClick={() => setOpen(false)}>
             &times;
           </button>

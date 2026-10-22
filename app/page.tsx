@@ -4,8 +4,6 @@ import Offers from "@/components/Offers";
 import Segments from "@/components/Segments";
 import Objections from "@/components/Objections";
 import Collab from "@/components/Collab";
-import Cases from "@/components/Cases";
-import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import Blog from "@/components/Blog";
 import Faq from "@/components/Faq";
@@ -22,8 +20,6 @@ export default function Home() {
         <Segments />
         <Objections />
         <Collab />
-        <Cases />
-        <Testimonials />
         <About />
         <Blog />
         <Faq />

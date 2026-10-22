@@ -1,6 +1,6 @@
-# Keitel Revenue
+# Kietel Revenue
 
-Sitio web de la consultora hotelera **Keitel Revenue**, construido con **Next.js 15 (App Router) + React + TypeScript**, conservando el sistema de diseño original (blanco · negro cálido · azul, tipografía Playfair Display) y todos sus efectos.
+Sitio web de la consultora hotelera **Kietel Revenue**, construido con **Next.js 15 (App Router) + React + TypeScript**, conservando el sistema de diseño original (blanco · negro cálido · azul, tipografía Playfair Display) y todos sus efectos.
 
 ## Arrancar en local
 

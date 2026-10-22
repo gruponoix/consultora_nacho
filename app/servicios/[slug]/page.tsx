@@ -18,9 +18,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
-  if (!service) return { title: "Servicio no encontrado · Keitel Revenue" };
+  if (!service) return { title: "Servicio no encontrado · Kietel Revenue" };
   return {
-    title: `${service.title} · Keitel Revenue`,
+    title: `${service.title} · Kietel Revenue`,
     description: service.lead,
     alternates: { canonical: `/servicios/${service.slug}` },
   };

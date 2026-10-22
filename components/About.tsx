@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Arrow } from "./icons";
 
 const METRICS = [
-  { target: 50, prefix: "+", suffix: "", label: "Hoteles asesorados" },
   { target: 25, prefix: "+", suffix: "%", label: "Incremento medio de ingresos" },
   { target: 10, prefix: "+", suffix: "", label: "Años de experiencia" },
   { text: "Internacional", label: "Presencia y proyectos" },
@@ -18,7 +17,7 @@ export default function About() {
             Estrategia hotelera con propósito
           </h2>
           <p className="section-sub">
-            Keitel nace de la convicción de que cada hotel tiene un potencial sin explotar.
+            Kietel nace de la convicción de que cada hotel tiene un potencial sin explotar.
             Convertimos buenas instalaciones en negocios verdaderamente rentables, combinando rigor
             analítico con una mirada humana de la hospitalidad.
           </p>

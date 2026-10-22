@@ -1,4 +1,4 @@
-import { SegHotel, SegStar, SegChain, SegResort, SegHostal } from "./icons";
+import { SegHotel, SegStar, SegChain, SegResort, SegHostal, SegApartment } from "./icons";
 
 const SEGMENTS = [
   { Icon: SegHotel, title: "Hoteles independientes", text: "Más competitividad frente a grandes cadenas, sin perder identidad." },
@@ -6,6 +6,7 @@ const SEGMENTS = [
   { Icon: SegChain, title: "Cadenas hoteleras", text: "Estandarización, eficiencia y revenue management multi-propiedad." },
   { Icon: SegResort, title: "Resorts", text: "Gestión de múltiples servicios e ingresos con visión integral." },
   { Icon: SegHostal, title: "Hostales", text: "Optimización de costes y canales para maximizar cada plaza." },
+  { Icon: SegApartment, title: "Apartamentos turísticos", text: "Precios dinámicos y presencia en canales para llenar el calendario." },
 ];
 
 export default function Segments() {

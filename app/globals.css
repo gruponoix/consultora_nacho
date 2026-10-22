@@ -1,5 +1,5 @@
 /* ============================================================
-   KEITEL REVENUE — Design System
+   KIETEL REVENUE — Design System
    White-predominant · elegant black · refined blue accent
    Ported to Next.js (next/font wires --font-playfair → --serif)
    ============================================================ */
@@ -276,14 +276,14 @@ button { font-family: inherit; }
 /* ============================================================
    METRICS
    ============================================================ */
-.metrics__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.metrics__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .about__metrics { margin-top: clamp(40px, 6vw, 64px); }
 .about__cta { text-align: center; margin-top: clamp(34px, 5vw, 52px); }
 .metric { text-align: center; position: relative; padding: 8px 10px; }
 .metric + .metric::before { content: ""; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); height: 54px; width: 1px; background: var(--line); }
 .metric__num { font-family: var(--serif); font-size: clamp(40px, 5vw, 62px); line-height: 1; color: var(--gold-deep); letter-spacing: -0.02em; }
 .metric__label { margin-top: 14px; font-size: 14px; color: var(--muted); letter-spacing: 0.02em; }
-@media (max-width: 760px) { .metrics__grid { grid-template-columns: repeat(2, 1fr); gap: 38px 20px; } .metric:nth-child(2n+1)::before { display: none; } }
+@media (max-width: 760px) { .metrics__grid { grid-template-columns: 1fr; gap: 38px; } .metric + .metric::before { display: none; } }
 
 /* ============================================================
    METHOD
@@ -299,7 +299,7 @@ button { font-family: inherit; }
 /* ============================================================
    SEGMENTS
    ============================================================ */
-.seg-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.seg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .seg { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 24px; transition: transform .35s, box-shadow .35s, background .35s; }
 .seg:hover { transform: translateY(-5px); box-shadow: var(--shadow-sm); background: var(--gold-tint); }
 .seg__icon { color: var(--gold-deep); margin-bottom: 18px; }

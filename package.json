@@ -1,8 +1,8 @@
 {
-  "name": "keitel-revenue",
+  "name": "kietel-revenue",
   "version": "1.0.0",
   "private": true,
-  "description": "Keitel Revenue — consultoría y gestión hotelera premium",
+  "description": "Kietel Revenue — consultoría y gestión hotelera premium",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

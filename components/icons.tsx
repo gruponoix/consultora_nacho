@@ -75,6 +75,11 @@ export const SegHostal = (props: IconProps) => (
     <path d="M4 21V5l8-2 8 2v16M4 21h16M9 21v-4h6v4" />
   </svg>
 );
+export const SegApartment = (props: IconProps) => (
+  <svg {...base(props)}>
+    <path d="M3 21h18M5 21V4h14v17M9 8h2M13 8h2M9 12h2M13 12h2M10 21v-4h4v4" />
+  </svg>
+);
 
 /* ---- Objections / values ---- */
 export const ShieldCheck = (props: IconProps) => (

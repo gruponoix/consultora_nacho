@@ -23,7 +23,7 @@ export const SERVICES: Service[] = [
     lead: "Asumimos áreas clave de tu hotel —revenue, ventas y reservas— con un equipo experto que rema en tu misma dirección.",
     image: "/images/hero-sunset.jpg",
     intro: [
-      "Externalizar con Keitel no es ceder el control de tu hotel: es sumar un equipo especializado que se integra con el tuyo y se responsabiliza de las áreas que más impacto tienen en tu cuenta de resultados.",
+      "Externalizar con Kietel no es ceder el control de tu hotel: es sumar un equipo especializado que se integra con el tuyo y se responsabiliza de las áreas que más impacto tienen en tu cuenta de resultados.",
       "Operamos tu revenue, tu distribución y tu venta directa con método, tecnología y reporting continuo, para que tú te concentres en la experiencia del huésped mientras nosotros maximizamos cada euro de ingreso.",
     ],
     includesTitle: "Qué áreas asumimos",

@@ -1,4 +1,5 @@
 import { LinkedIn, Instagram } from "./icons";
+import { SERVICES } from "@/lib/services";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -26,9 +27,9 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Servicios</h4>
             <ul>
-              <li><a href="#servicios">Externalización</a></li>
-              <li><a href="#servicios">Consultoría</a></li>
-              <li><a href="#servicios">Gestión operativa</a></li>
+              {SERVICES.map((s) => (
+                <li key={s.slug}><a href={`/servicios/${s.slug}`}>{s.title}</a></li>
+              ))}
               <li><a href="#modelo-h">Modelos de colaboración</a></li>
             </ul>
           </div>

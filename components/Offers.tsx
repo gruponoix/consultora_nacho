@@ -1,33 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Arrow, Building, ChartUp, Gear } from "./icons";
+import Image, { getImageProps } from "next/image";
+import PreloadLink from "./PreloadLink";
+import { Arrow, Building, ChartUp, Eye, Users } from "./icons";
+import { ALL_MODELS_INCLUDE, SERVICES, SERVICE_HERO } from "@/lib/services";
 
-const OFFERS = [
-  {
-    num: "01",
-    Icon: Building,
-    title: "Externalización",
-    text: "Asumimos áreas clave de tu hotel —revenue, ventas, reservas— con un equipo experto que rema en tu dirección.",
-    slug: "externalizacion",
-    img: "/images/hero-sunset.jpg",
-  },
-  {
-    num: "02",
-    Icon: ChartUp,
-    title: "Consultoría",
-    text: "Diagnóstico, estrategia y acompañamiento para decidir con datos y un plan claro de crecimiento.",
-    slug: "consultoria",
-    img: "/images/pexels-quang-nguyen-vinh-222549-14036242.jpg",
-  },
-  {
-    num: "03",
-    Icon: Gear,
-    title: "Gestión operativa",
-    text: "Operamos tu hotel —o áreas concretas— con foco en eficiencia, experiencia del huésped y resultados.",
-    slug: "gestion-operativa",
-    img: "/images/hotel-room.jpg",
-  },
-];
+const ICONS: Record<string, typeof Building> = {
+  "revenue-management-360": Building,
+  "revenue-management-partner": Users,
+  "revenue-projects": ChartUp,
+  "revenue-audit": Eye,
+};
 
 export default function Offers() {
   return (
@@ -36,44 +17,55 @@ export default function Offers() {
         <div className="section-head center reveal">
           <p className="eyebrow eyebrow--center">Lo que ofrecemos</p>
           <h2 className="section-title" id="oferta-h">
-            Tres palancas para elevar tu rentabilidad
+            Cuatro modelos de colaboración
           </h2>
           <p className="section-sub">
-            Ve directo al grano: elige el servicio que necesitas y descubre cómo trabajamos.
+            Desde la externalización completa hasta intervenciones específicas. Elegimos el nivel
+            de implicación de Kietel según la estructura, objetivos y necesidades de cada propiedad.
           </p>
         </div>
         <div className="offer-grid">
-          {OFFERS.map(({ num, Icon, title, text, slug, img }, i) => (
-            <Link
-              key={num}
-              href={`/servicios/${slug}`}
-              className="offer-card reveal"
-              data-d={i ? String(i) : undefined}
-              aria-label={`${title} — ver servicio`}
-            >
-              <Image
-                src={img}
-                alt=""
-                fill
-                sizes="(max-width: 1080px) 100vw, 33vw"
-                className="offer-card__bg"
-              />
-              <span className="offer-card__overlay" aria-hidden="true" />
-              <div className="offer-card__inner">
-                <span className="offer-card__num">{num}</span>
-                <div className="offer-card__icon" aria-hidden="true">
-                  <Icon />
+          {SERVICES.map(({ num, title, lead, slug, image }, i) => {
+            const Icon = ICONS[slug];
+            const { props: hero } = getImageProps({ src: image, alt: "", fill: true, ...SERVICE_HERO });
+            return (
+              <PreloadLink
+                key={slug}
+                href={`/servicios/${slug}`}
+                className="offer-card reveal"
+                data-d={i ? String(i) : undefined}
+                aria-label={`${title} — ver detalle`}
+                image={hero}
+              >
+                <Image
+                  src={image}
+                  alt=""
+                  fill
+                  placeholder="blur"
+                  sizes="(max-width: 600px) 100vw, (max-width: 1080px) 50vw, 25vw"
+                  className="offer-card__bg"
+                />
+                <span className="offer-card__overlay" aria-hidden="true" />
+                <div className="offer-card__inner">
+                  <span className="offer-card__num">{num}</span>
+                  <div className="offer-card__icon" aria-hidden="true">
+                    <Icon />
+                  </div>
+                  <div className="offer-card__txt">
+                    <h3>{title}</h3>
+                    <p>{lead}</p>
+                    <span className="offer-card__go">
+                      Ver detalle <Arrow />
+                    </span>
+                  </div>
                 </div>
-                <div className="offer-card__txt">
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <span className="offer-card__go">
-                    Ver servicio <Arrow />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </PreloadLink>
+            );
+          })}
+        </div>
+        <div className="offer-common reveal">
+          <span className="offer-common__label">En todos los modelos</span>
+          <span>{ALL_MODELS_INCLUDE.join(" · ")}</span>
         </div>
       </div>
     </section>

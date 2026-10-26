@@ -5,7 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Arrow, Check } from "@/components/icons";
-import { SERVICES, getService } from "@/lib/services";
+import { ALL_MODELS_INCLUDE, SERVICES, SERVICE_HERO, getService } from "@/lib/services";
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -46,8 +46,9 @@ export default async function ServicePage({
               alt={service.title}
               fill
               priority
-              sizes="100vw"
-              quality={85}
+              placeholder="blur"
+              sizes={SERVICE_HERO.sizes}
+              quality={SERVICE_HERO.quality}
               style={{ objectFit: "cover" }}
             />
           </div>
@@ -90,18 +91,19 @@ export default async function ServicePage({
 
         <section className="section">
           <div className="wrap">
-            <div className="section-head center reveal">
-              <p className="eyebrow eyebrow--center">Cómo trabajamos</p>
-              <h2 className="section-title">Un proceso pensado para este servicio</h2>
+            <div className="svc-fit">
+              <div className="svc-fit__card reveal">
+                <p className="eyebrow">Ideal para</p>
+                <p>{service.idealFor}</p>
+              </div>
+              <div className="svc-fit__card reveal" data-d="1">
+                <p className="eyebrow">{service.format.label}</p>
+                <p>{service.format.text}</p>
+              </div>
             </div>
-            <div className="steps">
-              {service.process.map((s, i) => (
-                <div className="step reveal" data-d={i ? String(i) : undefined} key={s.num}>
-                  <div className="step__num">{s.num}</div>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </div>
-              ))}
+            <div className="offer-common reveal">
+              <span className="offer-common__label">En todos los modelos</span>
+              <span>{ALL_MODELS_INCLUDE.join(" · ")}</span>
             </div>
           </div>
         </section>
@@ -111,8 +113,8 @@ export default async function ServicePage({
             <p className="eyebrow eyebrow--center">Diagnóstico gratuito</p>
             <h2>¿Hablamos sobre tu hotel?</h2>
             <p>
-              Cuéntanos tu situación y te enviaremos un primer análisis con oportunidades concretas
-              en {service.title.toLowerCase()}. Sin coste y sin compromiso.
+              Cuéntanos tu situación y te diremos si {service.title} es el modelo adecuado para tu
+              propiedad. Sin coste y sin compromiso.
             </p>
             <Link href="/#contacto" className="btn btn--gold">
               Solicitar diagnóstico gratuito <Arrow />

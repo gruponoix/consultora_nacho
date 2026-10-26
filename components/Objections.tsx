@@ -1,4 +1,5 @@
 import Image from "next/image";
+import receptionImg from "@/public/images/reception.jpg";
 import { ShieldCheck, Users, Star, Activity } from "./icons";
 
 const OBJECTIONS = [
@@ -31,7 +32,8 @@ export default function Objections() {
         <div className="obj-aside reveal">
           <div className="media">
             <Image
-              src="/images/reception.jpg"
+              src={receptionImg}
+              placeholder="blur"
               alt="Recepción de hotel con detalle cálido"
               fill
               sizes="(max-width: 1080px) 0px, 40vw"

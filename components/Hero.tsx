@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Sparkles from "./Sparkles";
+import heroImg from "@/public/images/pexels-bertellifotografia-16985111.jpg";
 
 export default function Hero() {
   return (
     <section className="hero" aria-label="Presentación">
       <div className="hero__bg">
         <Image
-          src="/images/pexels-bertellifotografia-16985111.jpg"
+          src={heroImg}
           alt="Hotel premium"
           fill
           priority
+          placeholder="blur"
           sizes="100vw"
           quality={85}
           style={{ objectFit: "cover" }}

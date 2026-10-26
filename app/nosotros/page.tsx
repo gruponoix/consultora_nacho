@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Lamp from "@/components/Lamp";
 import { Arrow } from "@/components/icons";
+import nosotrosImg from "@/public/images/pexels-quang-nguyen-vinh-222549-26729558.jpg";
 
 export const metadata: Metadata = {
   title: "Nosotros · Kietel Revenue",
@@ -21,10 +22,11 @@ export default function NosotrosPage() {
         <section className="svc-hero">
           <div className="svc-hero__bg">
             <Image
-              src="/images/pexels-quang-nguyen-vinh-222549-26729558.jpg"
+              src={nosotrosImg}
               alt="Kietel Revenue"
               fill
               priority
+              placeholder="blur"
               sizes="100vw"
               quality={85}
               style={{ objectFit: "cover" }}

@@ -1,4 +1,9 @@
-export type ServiceStep = { num: number; title: string; text: string };
+import type { StaticImageData } from "next/image";
+import heroSunset from "@/public/images/hero-sunset.jpg";
+import reception from "@/public/images/reception.jpg";
+import poolView from "@/public/images/pexels-quang-nguyen-vinh-222549-14036242.jpg";
+import hotelRoom from "@/public/images/hotel-room.jpg";
+
 export type ServiceFeature = { title: string; text: string };
 
 export type Service = {
@@ -7,94 +12,133 @@ export type Service = {
   eyebrow: string;
   title: string;
   lead: string;
-  image: string;
+  image: StaticImageData;
   intro: string[];
   includesTitle: string;
   includes: ServiceFeature[];
-  process: ServiceStep[];
+  idealFor: string;
+  format: { label: string; text: string };
 };
+
+/** Hero image settings on the detail page; Offers preloads with the same ones. */
+export const SERVICE_HERO = { sizes: "100vw", quality: 85 } as const;
+
+/** Common to every collaboration model (dossier · "En todos los modelos"). */
+export const ALL_MODELS_INCLUDE = [
+  "Metodología",
+  "KPIs",
+  "Reporting",
+  "Gobierno del proyecto",
+  "Seguimiento",
+  "Revisión de resultados",
+];
 
 export const SERVICES: Service[] = [
   {
-    slug: "externalizacion",
+    slug: "revenue-management-360",
     num: "01",
-    eyebrow: "Servicio · Externalización",
-    title: "Externalización",
-    lead: "Asumimos áreas clave de tu hotel —revenue, ventas y reservas— con un equipo experto que rema en tu misma dirección.",
-    image: "/images/hero-sunset.jpg",
+    eyebrow: "Modelo · Revenue Management 360°",
+    title: "Revenue Management 360°",
+    lead: "Tu equipo de Revenue, externalizado. Gestión integral y continua.",
+    image: heroSunset,
     intro: [
-      "Externalizar con Kietel no es ceder el control de tu hotel: es sumar un equipo especializado que se integra con el tuyo y se responsabiliza de las áreas que más impacto tienen en tu cuenta de resultados.",
-      "Operamos tu revenue, tu distribución y tu venta directa con método, tecnología y reporting continuo, para que tú te concentres en la experiencia del huésped mientras nosotros maximizamos cada euro de ingreso.",
+      "Para propiedades que quieren delegar la función de Revenue Management en un equipo especializado, con gestión continua y orientada a resultados.",
+      "Asumimos el pricing, la distribución, el forecast y el análisis de la demanda de tu propiedad, con objetivos y KPIs definidos desde el primer día.",
     ],
-    includesTitle: "Qué áreas asumimos",
+    includesTitle: "Qué gestionamos",
     includes: [
-      { title: "Revenue management", text: "Estrategia de precios, forecasting y gestión diaria del inventario." },
-      { title: "Distribución y canales", text: "Optimización de OTAs, metabuscadores y paridad para reducir costes." },
-      { title: "Venta directa", text: "Impulsamos tu canal propio para ganar margen e independencia." },
-      { title: "Reservas y atención", text: "Gestión profesional de reservas y conversión de cada solicitud." },
-      { title: "Reporting continuo", text: "Cuadros de mando claros y reuniones periódicas de seguimiento." },
-      { title: "Equipo dedicado", text: "Un responsable de cuenta y especialistas asignados a tu hotel." },
+      { title: "Pricing", text: "Estrategia tarifaria, BAR, reglas de pricing y ajustes diarios según demanda." },
+      { title: "Forecast", text: "Previsión de ocupación, ADR, RevPAR y evolución del pickup." },
+      { title: "Distribución", text: "Mix de canales, OTAs, restricciones, disponibilidad y coste de adquisición." },
+      { title: "Demanda", text: "Calendario de demanda, eventos, compresión, mercados y ventanas de reserva." },
+      { title: "Performance", text: "KPIs, benchmarking y detección de oportunidades." },
+      { title: "Gobierno", text: "Revenue meetings, reporting, responsables y calendario de decisiones." },
     ],
-    process: [
-      { num: 1, title: "Diagnóstico", text: "Auditamos tus áreas y datos para fijar el punto de partida." },
-      { num: 2, title: "Transición", text: "Asumimos la operativa con un plan de traspaso ordenado." },
-      { num: 3, title: "Operación", text: "Gestionamos el día a día con objetivos y seguimiento." },
-      { num: 4, title: "Mejora continua", text: "Medimos, ajustamos y escalamos lo que funciona." },
-    ],
+    idealFor:
+      "Hoteles y apartamentos sin equipo interno de Revenue o propiedades que prefieren externalizar completamente la función.",
+    format: {
+      label: "Modelo",
+      text: "Servicio recurrente · gestión integral · objetivos y KPIs definidos.",
+    },
   },
   {
-    slug: "consultoria",
+    slug: "revenue-management-partner",
     num: "02",
-    eyebrow: "Servicio · Consultoría",
-    title: "Consultoría",
-    lead: "Diagnóstico, estrategia y acompañamiento para decidir con datos y un plan claro de crecimiento.",
-    image: "/images/pexels-quang-nguyen-vinh-222549-14036242.jpg",
+    eyebrow: "Modelo · Revenue Management Partner",
+    title: "Revenue Management Partner",
+    lead: "Un equipo senior integrado con el tuyo. Estrategia, supervisión y acompañamiento continuo.",
+    image: reception,
     intro: [
-      "Cuando necesitas una mirada externa y experta, te ayudamos a entender dónde está el potencial oculto de tu hotel y cómo desbloquearlo.",
-      "Analizamos tu operación, tus ingresos y tu posicionamiento, y te entregamos un plan accionable con prioridades claras —para que tu equipo lo ejecute con confianza o lo hagamos contigo.",
+      "Para propiedades que ya cuentan con estructura interna, pero necesitan experiencia senior, metodología y una visión externa que acelere la toma de decisiones.",
+      "No sustituimos necesariamente a tu equipo: lo hacemos más fuerte. Kietel aporta estructura, visión y experiencia mientras el equipo de la propiedad mantiene el conocimiento operativo y el control de la ejecución.",
     ],
-    includesTitle: "Qué incluye",
+    includesTitle: "Cómo te acompañamos",
     includes: [
-      { title: "Auditoría 360º", text: "Revisión de revenue, distribución, costes y experiencia del huésped." },
-      { title: "Plan estratégico", text: "Objetivos, palancas y hoja de ruta priorizada y medible." },
-      { title: "Pricing y revenue", text: "Modelo de precios y políticas de inventario a tu medida." },
-      { title: "Benchmark de mercado", text: "Comparativa con tu competencia y oportunidades reales." },
-      { title: "Formación del equipo", text: "Capacitamos a tu personal en las nuevas herramientas." },
-      { title: "Acompañamiento", text: "Seguimiento para que el plan se traduzca en resultados." },
+      { title: "Comité de Revenue", text: "Revisión periódica de pickup, forecast, pricing y próximos movimientos." },
+      { title: "Supervisión", text: "Revisión de estrategia y principales decisiones de Revenue." },
+      { title: "Coaching", text: "Acompañamiento y transferencia de conocimiento al equipo interno." },
+      { title: "Análisis", text: "Datos, tendencias, competencia y oportunidades de mejora." },
+      { title: "Planificación", text: "Calendario comercial y de Revenue alineado con la demanda." },
+      { title: "Control", text: "KPIs, reporting y seguimiento de las acciones acordadas." },
     ],
-    process: [
-      { num: 1, title: "Inmersión", text: "Conocemos tu hotel, tu mercado y tus objetivos." },
-      { num: 2, title: "Análisis", text: "Cruzamos datos para detectar oportunidades reales." },
-      { num: 3, title: "Estrategia", text: "Diseñamos el plan con prioridades y métricas claras." },
-      { num: 4, title: "Acompañamiento", text: "Te apoyamos en la ejecución y medimos resultados." },
-    ],
+    idealFor:
+      "Hoteles con equipo comercial o de Revenue que buscan dirección, metodología o una segunda capa de expertise.",
+    format: {
+      label: "Modelo",
+      text: "Estrategia, supervisión y acompañamiento continuo junto a tu equipo.",
+    },
   },
   {
-    slug: "gestion-operativa",
+    slug: "revenue-projects",
     num: "03",
-    eyebrow: "Servicio · Gestión operativa",
-    title: "Gestión operativa",
-    lead: "Operamos tu hotel —o áreas concretas— con foco en eficiencia, experiencia del huésped y resultados.",
-    image: "/images/hotel-room.jpg",
+    eyebrow: "Modelo · Revenue Projects",
+    title: "Revenue Projects",
+    lead: "Intervenciones específicas. Impacto medible.",
+    image: poolView,
     intro: [
-      "Nos hacemos cargo de la operación de tu hotel con criterio hotelero y visión de negocio, alineando procesos, equipos y costes para que cada área rinda.",
-      "Desde la operativa completa hasta departamentos concretos, implantamos estándares, formamos a tu equipo y cuidamos la experiencia del huésped sin perder de vista la rentabilidad.",
+      "No siempre hace falta externalizar el Revenue. A veces hace falta resolver bien un problema concreto.",
+      "Intervenimos sobre un reto específico de tu propiedad con un alcance cerrado, entregables claros e impacto medible.",
     ],
-    includesTitle: "Qué incluye",
+    includesTitle: "Tipos de proyecto",
     includes: [
-      { title: "Operación integral", text: "Coordinamos las áreas clave del día a día del hotel." },
-      { title: "Equipos y formación", text: "Seleccionamos, formamos y motivamos a tu personal." },
-      { title: "Experiencia del huésped", text: "Estándares de servicio que mejoran tus reseñas." },
-      { title: "Control de costes", text: "Eficiencia operativa sin renunciar a la calidad." },
-      { title: "Procesos y estándares", text: "Manuales y protocolos que dan consistencia." },
-      { title: "Cuadro de mando", text: "Indicadores operativos y financieros en tiempo real." },
+      { title: "Pricing", text: "Rediseño de arquitectura tarifaria y estrategia de precios." },
+      { title: "Distribución", text: "Optimización de OTAs, canal directo, paridad y mix." },
+      { title: "Forecast & Budget", text: "Implantación o revisión de forecast, presupuesto y objetivos." },
+      { title: "Segmentación", text: "Revisión de mercados, segmentos, producción y potencial." },
+      { title: "Pre-opening", text: "Diseño de estrategia de Revenue para nuevas aperturas." },
+      { title: "Temporada", text: "Planes específicos para alta, baja, shoulder o mercados concretos." },
     ],
-    process: [
-      { num: 1, title: "Evaluación", text: "Revisamos operación, equipo y costes actuales." },
-      { num: 2, title: "Implantación", text: "Definimos estándares, procesos y responsabilidades." },
-      { num: 3, title: "Operación", text: "Gestionamos el día a día con foco en el resultado." },
-      { num: 4, title: "Optimización", text: "Mejoramos de forma continua eficiencia y experiencia." },
+    idealFor: "Propiedades con un problema o reto concreto.",
+    format: {
+      label: "Formato",
+      text: "Proyecto cerrado con alcance, calendario, entregables y KPIs definidos. Duración orientativa: 2–12 semanas.",
+    },
+  },
+  {
+    slug: "revenue-audit",
+    num: "04",
+    eyebrow: "Modelo · Revenue Audit",
+    title: "Revenue Audit",
+    lead: "Detectamos dónde estás dejando dinero sobre la mesa.",
+    image: hotelRoom,
+    intro: [
+      "Auditoría independiente para entender el punto de partida, identificar oportunidades y priorizar acciones.",
+      "Un diagnóstico completo de tu Revenue para saber qué está funcionando, qué debe cambiar y por dónde empezar.",
     ],
+    includesTitle: "Qué auditamos",
+    includes: [
+      { title: "Pricing", text: "Arquitectura tarifaria, BAR, descuentos y restricciones." },
+      { title: "Demanda", text: "Pickup, forecast, calendario y ventanas de reserva." },
+      { title: "Distribución", text: "OTAs, canal directo, mix y coste de adquisición." },
+      { title: "Segmentación", text: "Mercados, segmentos y producción." },
+      { title: "Performance", text: "KPIs, benchmarking y oportunidades." },
+      { title: "Organización", text: "Procesos, herramientas y responsabilidades." },
+    ],
+    idealFor: "Hoteles que necesitan saber qué está funcionando y qué debe cambiar.",
+    format: {
+      label: "Entregable",
+      text: "Diagnóstico + oportunidades + plan de acción priorizado.",
+    },
   },
 ];
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import receptionImg from "@/public/images/reception.jpg";
+import terraceImg from "@/public/images/terraza-desayuno.jpg";
 import { ShieldCheck, Users, Star, Activity } from "./icons";
 
 const OBJECTIONS = [
@@ -32,9 +32,9 @@ export default function Objections() {
         <div className="obj-aside reveal">
           <div className="media">
             <Image
-              src={receptionImg}
+              src={terraceImg}
               placeholder="blur"
-              alt="Recepción de hotel con detalle cálido"
+              alt="Terraza de desayuno de un hotel frente al mar"
               fill
               sizes="(max-width: 1080px) 0px, 40vw"
               style={{ objectFit: "cover" }}

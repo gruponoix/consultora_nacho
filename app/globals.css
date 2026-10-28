@@ -166,7 +166,8 @@ button { font-family: inherit; }
 .nav a { font-size: 14.5px; font-weight: 500; color: var(--ink-soft); position: relative; transition: color .25s; }
 .nav a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 1.5px; background: var(--gold); transition: width .3s; }
 .nav a:hover { color: var(--ink); }
-.nav a:hover::after { width: 100%; }
+.nav a:hover::after, .nav a[aria-current="page"]::after { width: 100%; }
+.nav a[aria-current="page"] { color: var(--ink); }
 
 /* Services dropdown (desktop) */
 .nav__has-menu { position: relative; display: inline-flex; align-items: center; }
@@ -192,7 +193,7 @@ button { font-family: inherit; }
 .header--light .logo { color: #fff; }
 .header--light .logo small { color: rgba(255,255,255,0.78); }
 .header--light .nav a { color: rgba(255,255,255,0.9); }
-.header--light .nav a:hover { color: #fff; }
+.header--light .nav a:hover, .header--light .nav a[aria-current="page"] { color: #fff; }
 .header--light .menu-btn span { background: #fff; }
 
 .drawer { position: fixed; inset: 0; z-index: 70; background: var(--bg); display: flex; flex-direction: column; padding: 28px var(--gut); transform: translateY(-100%); transition: transform .5s cubic-bezier(.6,0,.2,1); visibility: hidden; }
@@ -579,15 +580,18 @@ button { font-family: inherit; }
    ============================================================ */
 /* Full-bleed fixed image hero with the title overlaid (parallax, like home). */
 .svc-hero { position: relative; overflow: hidden; color: #fff; }
-.svc-hero__bg { position: fixed; inset: 0; z-index: -1; }
-.svc-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+/* Sized to the band (not the whole viewport) so the crop can favour the lower part of the photo. */
+.svc-hero__bg { position: fixed; inset: 0 0 auto 0; height: max(40vh, 340px); z-index: -1; }
+.svc-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
 @media (prefers-reduced-motion: reduce) { .svc-hero__bg { position: absolute; } }
 .svc-hero__overlay { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(20,17,12,0.58) 0%, rgba(20,17,12,0.40) 45%, rgba(20,17,12,0.82) 100%); }
-.svc-hero__content { position: relative; z-index: 1; text-align: center; padding-block: clamp(120px, 16vw, 156px); }
+/* Compact band (~40% of the viewport); the top padding clears the floating header. */
+.svc-hero { min-height: 40vh; display: flex; flex-direction: column; justify-content: center; }
+.svc-hero__content { position: relative; z-index: 1; text-align: center; padding: 108px 0 32px; }
 .svc-hero .eyebrow { color: var(--gold-soft); }
 .svc-hero .eyebrow::before, .svc-hero .eyebrow::after { background: var(--gold-soft); }
-.svc-hero__title { color: #fff; font-size: clamp(44px, 7.4vw, 94px); line-height: 1.0; margin-top: 6px; }
-.svc-hero__lead { color: rgba(255,255,255,0.9); font-size: clamp(17px, 1.8vw, 22px); max-width: 660px; margin: 18px auto 0; line-height: 1.5; }
+.svc-hero__title { color: #fff; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.0; margin-top: 6px; }
+.svc-hero__lead { color: rgba(255,255,255,0.9); font-size: clamp(15px, 1.3vw, 18px); max-width: 640px; margin: 12px auto 0; line-height: 1.5; }
 
 .svc-intro { max-width: 760px; }
 .svc-intro p { color: var(--ink-soft); font-size: 17px; line-height: 1.7; }

@@ -30,15 +30,15 @@ export default function Footer() {
               {SERVICES.map((s) => (
                 <li key={s.slug}><a href={`/servicios/${s.slug}`}>{s.title}</a></li>
               ))}
-              <li><a href="#modelo-h">Modelos de colaboración</a></li>
+              <li><a href="/servicios#modelo-h">Modelos de colaboración</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Empresa</h4>
             <ul>
-              <li><a href="#nosotros">Nosotros</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="/nosotros">Nosotros</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/contacto">Contacto</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -46,7 +46,7 @@ export default function Footer() {
             <ul>
               <li><a href="mailto:hola@keitelrevenue.com">hola@keitelrevenue.com</a></li>
               <li><a href="#">Málaga, España</a></li>
-              <li><a href="#contacto">Diagnóstico gratuito</a></li>
+              <li><a href="/contacto">Diagnóstico gratuito</a></li>
             </ul>
           </div>
         </div>

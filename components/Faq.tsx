@@ -33,7 +33,7 @@ export default function Faq() {
           <p className="eyebrow">Preguntas frecuentes</p>
           <h2 id="faq-h">Resolvemos tus dudas</h2>
           <p>¿Tienes otra pregunta? Escríbenos y te respondemos sin compromiso.</p>
-          <a href="#contacto" className="btn btn--gold">
+          <a href="/contacto" className="btn btn--gold">
             Hablar con nosotros <Arrow />
           </a>
         </div>

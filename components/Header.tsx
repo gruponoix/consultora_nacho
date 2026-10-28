@@ -6,11 +6,11 @@ import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 
 const LINKS = [
-  { href: "#top", label: "Inicio" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/", label: "Inicio" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const Caret = () => (
@@ -26,7 +26,12 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   // On the home page anchors scroll in-page (Lenis); elsewhere they route home first.
-  const to = (hash: string) => (pathname === "/" ? hash : `/${hash}`);
+  const to = (href: string) =>
+    href.startsWith("#") ? (pathname === "/" ? href : `/${href}`) : href;
+  const current = (href: string) =>
+    (href === "/" ? pathname === "/" : !href.startsWith("#") && pathname.startsWith(href))
+      ? "page"
+      : undefined;
   // Light text while sitting over a dark image hero (top, not yet scrolled).
   const light = overImage && !scrolled;
 
@@ -51,17 +56,22 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
         id="top"
       >
         <div className="wrap header__bar">
-          <a href={to("#top")} className="logo" aria-label="Kietel Revenue — Inicio">
+          <Link href="/" className="logo" aria-label="Kietel Revenue — Inicio">
             KIETEL <small>Revenue</small>
-          </a>
+          </Link>
           <nav className="nav" aria-label="Navegación principal">
             {LINKS.map((l) =>
-              l.href === "#servicios" ? (
+              l.href === "/servicios" ? (
                 <div key={l.href} className="nav__has-menu">
-                  <a href={to(l.href)} className="nav__top" aria-haspopup="true">
+                  <Link
+                    href={l.href}
+                    className="nav__top"
+                    aria-haspopup="true"
+                    aria-current={current(l.href)}
+                  >
                     {l.label}
                     <Caret />
-                  </a>
+                  </Link>
                   <div className="nav__menu" role="menu" aria-label="Servicios">
                     <div className="nav__menu-inner">
                       {SERVICES.map((s) => (
@@ -78,16 +88,16 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
                   </div>
                 </div>
               ) : (
-                <a key={l.href} href={to(l.href)}>
+                <Link key={l.href} href={to(l.href)} aria-current={current(l.href)}>
                   {l.label}
-                </a>
+                </Link>
               )
             )}
           </nav>
           <div className="header__cta">
-            <a href={to("#contacto")} className="btn btn--gold">
+            <Link href="/contacto" className="btn btn--gold">
               Solicitar diagnóstico
-            </a>
+            </Link>
             <button
               className="menu-btn"
               aria-label="Abrir menú"
@@ -116,11 +126,11 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
         </div>
         <nav aria-label="Navegación móvil">
           {LINKS.map((l) =>
-            l.href === "#servicios" ? (
+            l.href === "/servicios" ? (
               <div key={l.href} className="drawer__group">
-                <a href={to(l.href)} onClick={() => setOpen(false)}>
+                <Link href={l.href} aria-current={current(l.href)} onClick={() => setOpen(false)}>
                   {l.label}
-                </a>
+                </Link>
                 <div className="drawer__sub">
                   {SERVICES.map((s) => (
                     <Link
@@ -135,15 +145,20 @@ export default function Header({ overImage = false }: { overImage?: boolean }) {
                 </div>
               </div>
             ) : (
-              <a key={l.href} href={to(l.href)} onClick={() => setOpen(false)}>
+              <Link
+                key={l.href}
+                href={to(l.href)}
+                aria-current={current(l.href)}
+                onClick={() => setOpen(false)}
+              >
                 {l.label}
-              </a>
+              </Link>
             )
           )}
         </nav>
-        <a href={to("#contacto")} className="btn btn--gold" onClick={() => setOpen(false)}>
+        <Link href="/contacto" className="btn btn--gold" onClick={() => setOpen(false)}>
           Solicitar diagnóstico
-        </a>
+        </Link>
       </div>
     </>
   );

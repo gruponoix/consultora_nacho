@@ -52,7 +52,7 @@ export default function NosotrosPage() {
               Cuéntanos sobre tu hotel y te enviaremos un primer análisis con oportunidades concretas
               de mejora. Sin coste y sin compromiso.
             </p>
-            <Link href="/#contacto" className="btn btn--gold">
+            <Link href="/contacto" className="btn btn--gold">
               Solicitar diagnóstico gratuito <Arrow />
             </Link>
           </div>

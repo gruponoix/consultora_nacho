@@ -116,7 +116,7 @@ export default async function ServicePage({
               Cuéntanos tu situación y te diremos si {service.title} es el modelo adecuado para tu
               propiedad. Sin coste y sin compromiso.
             </p>
-            <Link href="/#contacto" className="btn btn--gold">
+            <Link href="/contacto" className="btn btn--gold">
               Solicitar diagnóstico gratuito <Arrow />
             </Link>
           </div>

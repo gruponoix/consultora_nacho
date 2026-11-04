@@ -121,7 +121,16 @@ function BlockBody({ block }: { block: Block }) {
 }
 
 /** All blocks of a page in one tabbed section: the topic list on the left, the chosen topic on the right. */
-export default function ContentBlocks({ blocks, heading }: { blocks: Block[]; heading: string }) {
+export default function ContentBlocks({
+  blocks,
+  heading,
+  footer,
+}: {
+  blocks: Block[];
+  heading: string;
+  /** Shown under the tabs, still inside the section. */
+  footer?: React.ReactNode;
+}) {
   return (
     <section className="section section--alt">
       <div className="wrap">
@@ -135,12 +144,13 @@ export default function ContentBlocks({ blocks, heading }: { blocks: Block[]; he
             content: <BlockBody block={block} />,
           }))}
         />
+        {footer}
       </div>
     </section>
   );
 }
 
-export function ClosingCta({ closing, children }: { closing: Closing; children?: React.ReactNode }) {
+export function ClosingCta({ closing }: { closing: Closing }) {
   return (
     <section className="section svc-cta">
       <div className="wrap reveal">
@@ -151,7 +161,6 @@ export function ClosingCta({ closing, children }: { closing: Closing; children?:
         <Link href="/contacto" className="btn btn--gold">
           {closing.cta} <Arrow />
         </Link>
-        {children}
       </div>
     </section>
   );

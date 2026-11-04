@@ -73,14 +73,12 @@ export default async function ServicePage({
 
         <ContentBlocks blocks={service.blocks} heading={`Cómo funciona ${service.title}`} />
 
-        <section className="section section--tight">
-          <div className="wrap offer-common reveal">
+        <ClosingCta closing={service.closing}>
+          <div className="offer-common svc-cta__common">
             <span className="offer-common__label">En todos los modelos</span>
             <span>{ALL_MODELS_INCLUDE.join(" · ")}</span>
           </div>
-        </section>
-
-        <ClosingCta closing={service.closing} />
+        </ClosingCta>
       </main>
       <Footer />
     </>

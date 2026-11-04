@@ -140,7 +140,7 @@ export default function ContentBlocks({ blocks, heading }: { blocks: Block[]; he
   );
 }
 
-export function ClosingCta({ closing }: { closing: Closing }) {
+export function ClosingCta({ closing, children }: { closing: Closing; children?: React.ReactNode }) {
   return (
     <section className="section svc-cta">
       <div className="wrap reveal">
@@ -151,6 +151,7 @@ export function ClosingCta({ closing }: { closing: Closing }) {
         <Link href="/contacto" className="btn btn--gold">
           {closing.cta} <Arrow />
         </Link>
+        {children}
       </div>
     </section>
   );

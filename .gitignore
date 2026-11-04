@@ -29,3 +29,7 @@ next-env.d.ts
 
 # dossier comercial (confidencial)
 *.pdf
+
+# documentos de trabajo del cliente
+/docs/
+*.docx

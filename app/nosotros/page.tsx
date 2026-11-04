@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Lamp from "@/components/Lamp";
-import { Arrow } from "@/components/icons";
+import ContentBlocks, { ClosingCta } from "@/components/ContentBlocks";
+import Rich from "@/components/Rich";
+import { NOSOTROS_BLOCKS, NOSOTROS_CLOSING, NOSOTROS_INTRO } from "@/lib/nosotros";
 import nosotrosImg from "@/public/images/pexels-quang-nguyen-vinh-222549-26729558.jpg";
 
 export const metadata: Metadata = {
   title: "Nosotros · Kietel Revenue",
   description:
-    "Conoce a Kietel Revenue y a su fundador, Ignacio Góngora. Más de una década convirtiendo hoteles en negocios rentables, con rigor analítico y mirada humana.",
+    "Kietel Revenue Management ayuda a hoteles y apartamentos turísticos a tomar mejores decisiones, maximizar sus ingresos y construir negocios más rentables. Más de 10 años de experiencia en el sector hotelero.",
   alternates: { canonical: "/nosotros" },
 };
 
@@ -36,27 +37,25 @@ export default function NosotrosPage() {
           <div className="wrap svc-hero__content">
             <h1 className="svc-hero__title">Nosotros</h1>
             <p className="svc-hero__lead">
-              Detrás de Kietel hay más de una década dirigiendo y asesorando hoteles. Esta es la
-              visión, los valores y la persona que la hacen posible.
+              Convertimos estrategia en rentabilidad.
             </p>
           </div>
         </section>
 
+        <section className="section">
+          <div className="wrap blk-prose blk-intro-center reveal">
+            {NOSOTROS_INTRO.body.map((p, i) => (
+              <p key={i}>
+                <Rich text={p} />
+              </p>
+            ))}
+            <p className="blk-quote">{NOSOTROS_INTRO.quote}</p>
+          </div>
+        </section>
+
+        <ContentBlocks blocks={NOSOTROS_BLOCKS} heading="Cómo trabajamos en Kietel" />
         <Lamp />
-
-        <section className="section svc-cta">
-          <div className="wrap reveal">
-            <p className="eyebrow eyebrow--center">Diagnóstico gratuito</p>
-            <h2>¿Trabajamos juntos?</h2>
-            <p>
-              Cuéntanos sobre tu hotel y te enviaremos un primer análisis con oportunidades concretas
-              de mejora. Sin coste y sin compromiso.
-            </p>
-            <Link href="/contacto" className="btn btn--gold">
-              Solicitar diagnóstico gratuito <Arrow />
-            </Link>
-          </div>
-        </section>
+        <ClosingCta closing={NOSOTROS_CLOSING} />
       </main>
       <Footer />
     </>

@@ -88,7 +88,12 @@ export default function Sparkles({
     };
 
     resize();
-    frame();
+    // Only animate while the hero is on screen; scrolled away it would burn a frame loop for nothing.
+    const io = new IntersectionObserver(([entry]) => {
+      cancelAnimationFrame(raf);
+      if (entry.isIntersecting) frame();
+    });
+    io.observe(canvas);
     const onResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(resize, 180);
@@ -97,6 +102,7 @@ export default function Sparkles({
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
     };

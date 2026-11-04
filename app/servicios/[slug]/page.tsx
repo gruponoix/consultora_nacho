@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Arrow, Check } from "@/components/icons";
+import ContentBlocks, { ClosingCta } from "@/components/ContentBlocks";
+import Rich from "@/components/Rich";
 import { ALL_MODELS_INCLUDE, SERVICES, SERVICE_HERO, getService } from "@/lib/services";
 
 export function generateStaticParams() {
@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!service) return { title: "Servicio no encontrado · Kietel Revenue" };
   return {
     title: `${service.title} · Kietel Revenue`,
-    description: service.lead,
+    description: `${service.heroLead} ${service.intro[0]}`.replace(/\*\*/g, ""),
     alternates: { canonical: `/servicios/${service.slug}` },
   };
 }
@@ -54,73 +54,33 @@ export default async function ServicePage({
           </div>
           <span className="svc-hero__overlay" aria-hidden="true" />
           <div className="wrap svc-hero__content">
+            <p className="eyebrow eyebrow--center">Modelo {service.num}</p>
             <h1 className="svc-hero__title">{service.title}</h1>
-            <p className="svc-hero__lead">{service.lead}</p>
+            <p className="svc-hero__lead">{service.heroLead}</p>
           </div>
         </section>
 
         <section className="section">
           <div className="wrap svc-intro reveal">
             {service.intro.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>
+                <Rich text={p} />
+              </p>
             ))}
+            {service.introQuote && <p className="blk-quote">{service.introQuote}</p>}
           </div>
         </section>
 
-        <section className="section section--alt">
-          <div className="wrap">
-            <div className="section-head reveal">
-              <p className="eyebrow">{service.includesTitle}</p>
-              <h2 className="section-title">Todo lo que ponemos de tu lado</h2>
-            </div>
-            <div className="svc-includes">
-              {service.includes.map((f, i) => (
-                <article className="svc-feature reveal" data-d={String((i % 2) + 1)} key={f.title}>
-                  <div className="svc-feature__icn" aria-hidden="true">
-                    <Check />
-                  </div>
-                  <div>
-                    <h3>{f.title}</h3>
-                    <p>{f.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+        <ContentBlocks blocks={service.blocks} heading={`Cómo funciona ${service.title}`} />
+
+        <section className="section section--tight">
+          <div className="wrap offer-common reveal">
+            <span className="offer-common__label">En todos los modelos</span>
+            <span>{ALL_MODELS_INCLUDE.join(" · ")}</span>
           </div>
         </section>
 
-        <section className="section">
-          <div className="wrap">
-            <div className="svc-fit">
-              <div className="svc-fit__card reveal">
-                <p className="eyebrow">Ideal para</p>
-                <p>{service.idealFor}</p>
-              </div>
-              <div className="svc-fit__card reveal" data-d="1">
-                <p className="eyebrow">{service.format.label}</p>
-                <p>{service.format.text}</p>
-              </div>
-            </div>
-            <div className="offer-common reveal">
-              <span className="offer-common__label">En todos los modelos</span>
-              <span>{ALL_MODELS_INCLUDE.join(" · ")}</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="section svc-cta">
-          <div className="wrap reveal">
-            <p className="eyebrow eyebrow--center">Diagnóstico gratuito</p>
-            <h2>¿Hablamos sobre tu hotel?</h2>
-            <p>
-              Cuéntanos tu situación y te diremos si {service.title} es el modelo adecuado para tu
-              propiedad. Sin coste y sin compromiso.
-            </p>
-            <Link href="/contacto" className="btn btn--gold">
-              Solicitar diagnóstico gratuito <Arrow />
-            </Link>
-          </div>
-        </section>
+        <ClosingCta closing={service.closing} />
       </main>
       <Footer />
     </>

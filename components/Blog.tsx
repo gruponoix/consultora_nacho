@@ -1,15 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Arrow } from "./icons";
-import revenueImg from "@/public/images/blog-revenue.jpg";
+import revenueImg from "@/public/images/blog-dashboard.jpg";
 import ventaImg from "@/public/images/blog-venta-directa.jpg";
 import operacionesImg from "@/public/images/blog-operaciones.jpg";
 
 const POSTS = [
   {
-    cat: "Revenue",
+    cat: "Revenue Management",
     img: revenueImg,
-    meta: "12 May 2026 · 6 min de lectura",
-    title: "5 palancas de revenue management que casi nadie aprovecha",
+    meta: "4 Nov 2026 · 10 min de lectura",
+    title: "¿Qué es el Revenue Management y cómo puede aumentar la rentabilidad de tu hotel?",
+    href: "/blog/revenue-management-hotel",
   },
   {
     cat: "Venta directa",
@@ -56,9 +58,13 @@ export default function Blog() {
               <div className="post__body">
                 <p className="post__meta">{p.meta}</p>
                 <h3>{p.title}</h3>
-                <a href="#blog" className="link-more">
-                  Leer artículo <Arrow />
-                </a>
+                {p.href ? (
+                  <Link href={p.href} className="link-more">
+                    Leer artículo <Arrow />
+                  </Link>
+                ) : (
+                  <span className="link-more link-more--soon">Próximamente</span>
+                )}
               </div>
             </article>
           ))}

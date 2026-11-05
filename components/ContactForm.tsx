@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Arrow, Check } from "./icons";
 import { CONTACT } from "@/lib/contact";
+import { SERVICE_OPTIONS } from "@/lib/serviceOptions";
 
-type Errors = { name?: boolean; hotel?: boolean; email?: boolean; web?: boolean };
+type Errors = { name?: boolean; hotel?: boolean; email?: boolean; web?: boolean; servicio?: boolean };
 
 export default function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
@@ -23,18 +24,20 @@ export default function ContactForm() {
     const hotel = String(data.get("hotel") || "").trim();
     const email = String(data.get("email") || "").trim();
     const web = String(data.get("web") || "").trim();
+    const servicio = String(data.get("servicio") || "");
 
     const next: Errors = {
       name: name.length < 2,
       hotel: hotel.length < 2,
       email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
       web: web.length > 0 && !/\./.test(web),
+      servicio: !servicio,
     };
     setErrors(next);
 
-    if (next.name || next.hotel || next.email || next.web) {
-      const firstKey = (["name", "hotel", "email", "web"] as const).find((k) => next[k]);
-      if (firstKey) form.querySelector<HTMLInputElement>(`[name="${firstKey}"]`)?.focus();
+    if (next.name || next.hotel || next.email || next.web || next.servicio) {
+      const firstKey = (["name", "hotel", "email", "web", "servicio"] as const).find((k) => next[k]);
+      if (firstKey) form.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
       return;
     }
     setSending(true);
@@ -48,6 +51,7 @@ export default function ContactForm() {
           hotel,
           email,
           web,
+          servicio,
           mejorar: String(data.get("mejorar") || "").trim(),
           company: String(data.get("company") || ""),
         }),
@@ -135,6 +139,27 @@ export default function ContactForm() {
             />
             <span className="field__err">Revisa la dirección web.</span>
           </div>
+        </div>
+
+        <div className={`field${errors.servicio ? " invalid" : ""}`}>
+          <label htmlFor="f-servicio">Servicio de interés</label>
+          <select
+            id="f-servicio"
+            name="servicio"
+            required
+            defaultValue=""
+            onChange={() => clearError("servicio")}
+          >
+            <option value="" disabled>
+              Selecciona un servicio
+            </option>
+            {SERVICE_OPTIONS.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+          <span className="field__err">Elige el servicio que te interesa.</span>
         </div>
 
         <div className="field">

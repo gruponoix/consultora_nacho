@@ -1,6 +1,7 @@
 // HTML email templates for the contact form, styled after the website
-// (warm whites, Playfair headings, blue accent). Email clients need tables and
-// inline styles; Playfair loads in Apple Mail/iOS, others fall back to Georgia.
+// (warm whites, serif headings, blue accent). Email clients need tables and
+// inline styles. No external stylesheets (web fonts) — they hurt deliverability;
+// Playfair shows where installed, Georgia otherwise.
 import { CONTACT } from "./contact";
 
 const SITE = "https://www.kietelrevenue.com";
@@ -27,6 +28,7 @@ export type ContactRequest = {
   hotel: string;
   email: string;
   web: string;
+  servicio: string;
   mejorar: string;
 };
 
@@ -47,7 +49,6 @@ function layout({ preheader, body }: { preheader: string; body: string }) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <title>Kietel Revenue</title>
 </head>
 <body style="margin:0;padding:0;background:${C.page};-webkit-text-size-adjust:100%">
@@ -119,6 +120,7 @@ export function internalEmail(r: ContactRequest, receivedAt: Date) {
   const replyHref = `mailto:${r.email}?subject=${encodeURIComponent(replySubject)}`;
 
   const rows: [string, string][] = [
+    ["Servicio", `<strong>${esc(r.servicio)}</strong>`],
     ["Contacto", esc(r.name)],
     ["Email", link(`mailto:${r.email}`, r.email)],
     ["Web", r.web ? link(webUrl(r.web), r.web) : `<span style="color:${C.muted}">No indicada</span>`],
@@ -150,6 +152,7 @@ export function internalEmail(r: ContactRequest, receivedAt: Date) {
   const text = [
     `Nueva solicitud de diagnóstico: ${r.hotel}`,
     "",
+    `Servicio: ${r.servicio}`,
     `Contacto: ${r.name}`,
     `Email: ${r.email}`,
     `Web: ${r.web || "No indicada"}`,
@@ -162,8 +165,8 @@ export function internalEmail(r: ContactRequest, receivedAt: Date) {
   ].join("\n");
 
   return {
-    subject: `Nueva solicitud de diagnóstico · ${r.hotel}`,
-    html: layout({ preheader: `${r.name} · ${r.email}`, body }),
+    subject: `Nueva solicitud de diagnóstico · ${r.hotel} · ${r.servicio}`,
+    html: layout({ preheader: `${r.servicio} · ${r.name} · ${r.email}`, body }),
     text,
   };
 }
@@ -195,6 +198,7 @@ export function confirmationEmail(r: ContactRequest) {
 
   const summary: [string, string][] = [
     ["Hotel", esc(r.hotel)],
+    ["Servicio", esc(r.servicio)],
     ["Email", esc(r.email)],
     ...(r.web ? ([["Web", esc(r.web)]] as [string, string][]) : []),
   ];

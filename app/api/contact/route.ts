@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server";
 import { confirmationEmail, internalEmail, type ContactRequest } from "@/lib/emails";
+import { CONTACT } from "@/lib/contact";
+import { SERVICE_OPTIONS } from "@/lib/serviceOptions";
 
 // Contact form → two emails via Resend's REST API (no SDK needed):
 //   1. notification to CONTACT_TO_EMAIL (reply-to = the hotel)
-//   2. confirmation to the hotel (reply-to = CONTACT_TO_EMAIL)
+//   2. confirmation to the hotel, from and reply-to CONTACT.email
 // Env: RESEND_API_KEY (secret) and CONTACT_TO_EMAIL (e.g. ignacio@kietelrevenue.com).
 // The sender domain (kietelrevenue.com) must be verified in Resend.
 const FROM_INTERNAL = "Web Kietel Revenue <web@kietelrevenue.com>";
-const FROM_CONFIRMATION = "Kietel Revenue <web@kietelrevenue.com>";
+// Sent from a real, monitored mailbox: spam filters (Outlook/Hotmail especially)
+// distrust senders that can't receive mail.
+const FROM_CONFIRMATION = `Ignacio Góngora · Kietel Revenue <${CONTACT.email}>`;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -46,10 +50,16 @@ export async function POST(req: Request) {
     hotel: field(body.hotel, 160),
     email: field(body.email, 200),
     web: field(body.web, 200),
+    servicio: field(body.servicio, 80),
     mejorar: field(body.mejorar, 4000),
   };
 
-  if (r.name.length < 2 || r.hotel.length < 2 || !EMAIL_RE.test(r.email)) {
+  if (
+    r.name.length < 2 ||
+    r.hotel.length < 2 ||
+    !EMAIL_RE.test(r.email) ||
+    !(SERVICE_OPTIONS as readonly string[]).includes(r.servicio)
+  ) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
@@ -71,7 +81,7 @@ export async function POST(req: Request) {
     await send(apiKey, {
       from: FROM_CONFIRMATION,
       to: [r.email],
-      reply_to: recipients[0],
+      reply_to: CONTACT.email,
       ...confirmationEmail(r),
     });
   } catch (err) {

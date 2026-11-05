@@ -509,11 +509,14 @@ button { font-family: inherit; }
 .form-card > p { color: var(--muted); font-size: 14.5px; margin-bottom: 26px; }
 .field { margin-bottom: 18px; }
 .field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; letter-spacing: 0.02em; }
-.field input, .field textarea { width: 100%; padding: 14px 16px; font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 11px; transition: border-color .25s, box-shadow .25s, background .25s; }
+.field input, .field textarea, .field select { width: 100%; padding: 14px 16px; font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 11px; transition: border-color .25s, box-shadow .25s, background .25s; }
 .field textarea { min-height: 104px; resize: vertical; line-height: 1.55; }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted-2); }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(47,98,160,0.12); }
-.field.invalid input, .field.invalid textarea { border-color: #C0563E; background: #FCF3F0; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(47,98,160,0.12); }
+.field.invalid input, .field.invalid textarea, .field.invalid select { border-color: #C0563E; background: #FCF3F0; }
+.field select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 44px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238B7F6C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; }
+.field select:invalid { color: var(--muted-2); }
+.field select option { color: var(--ink); }
 .field__err { font-size: 12.5px; color: #C0563E; margin-top: 6px; display: none; }
 .field.invalid .field__err { display: block; }
 .form-card .btn { width: 100%; justify-content: center; margin-top: 6px; }

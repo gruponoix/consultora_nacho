@@ -59,7 +59,7 @@ const jsonLd = {
   knowsLanguage: ["es", "en"],
   founder: { "@type": "Person", name: "Ignacio Góngora Espada", jobTitle: "CEO & Fundador" },
   address: { "@type": "PostalAddress", addressLocality: "Málaga", addressCountry: "ES" },
-  sameAs: ["https://www.linkedin.com/", "https://www.instagram.com/"],
+  sameAs: [CONTACT.linkedin],
   slogan: "Impulsamos la rentabilidad de hoteles independientes y cadenas.",
 };
 

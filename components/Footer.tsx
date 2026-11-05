@@ -1,4 +1,4 @@
-import { LinkedIn, Instagram } from "./icons";
+import { LinkedIn } from "./icons";
 import { SERVICES } from "@/lib/services";
 import { CONTACT } from "@/lib/contact";
 
@@ -17,12 +17,15 @@ export default function Footer() {
               criterio y rentabilidad.
             </p>
             <div className="footer-social">
-              <a href="#" aria-label="LinkedIn de Kietel Revenue">
+              <a
+                href={CONTACT.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn de Kietel Revenue"
+              >
                 <LinkedIn />
               </a>
-              <a href="#" aria-label="Instagram de Kietel Revenue">
-                <Instagram />
-              </a>
+              {/* Instagram: add back (icon exists in ./icons) once the account is live. */}
             </div>
           </div>
           <div className="footer-col">

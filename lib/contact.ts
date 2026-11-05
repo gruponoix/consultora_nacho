@@ -4,4 +4,5 @@ export const CONTACT = {
   phone: "+34 653 598 703",
   phoneHref: "tel:+34653598703",
   city: "Málaga, España",
+  linkedin: "https://www.linkedin.com/company/kietel-revenue/",
 };

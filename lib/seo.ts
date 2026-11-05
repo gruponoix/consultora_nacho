@@ -8,3 +8,6 @@ export const OG_IMAGE = {
   height: 630,
   alt: "Kietel Revenue · Revenue Management",
 };
+
+// Google tag (Analytics via Tag Manager container).
+export const GOOGLE_TAG_ID = "GTM-N6JWBJGJ";

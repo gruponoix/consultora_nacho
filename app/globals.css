@@ -883,3 +883,9 @@ button { font-family: inherit; }
   .rmi__grid { grid-template-columns: 1fr; }
   .art-demand__tag { width: 40%; }
 }
+
+/* ---- Cookie consent ---- */
+.cookies { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90; max-width: 460px; margin-left: auto; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow-lg); padding: 20px 22px; }
+.cookies p { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 16px; }
+.cookies__actions { display: flex; gap: 10px; justify-content: flex-end; }
+.cookies__actions .btn { padding: 10px 20px; font-size: 13px; }

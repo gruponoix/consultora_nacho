@@ -1,4 +1,5 @@
 import { LinkedIn } from "./icons";
+import CookieSettingsLink from "./CookieSettingsLink";
 import { SERVICES } from "@/lib/services";
 import { CONTACT } from "@/lib/contact";
 
@@ -59,7 +60,7 @@ export default function Footer() {
           <span>© {year} Kietel Revenue · Todos los derechos reservados.</span>
           <span>
             <a href="#">Aviso legal</a> · <a href="#">Política de privacidad</a> ·{" "}
-            <a href="#">Cookies</a>
+            <CookieSettingsLink />
           </span>
         </div>
       </div>

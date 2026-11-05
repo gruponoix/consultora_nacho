@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Interactions from "@/components/Interactions";
+import { OG_IMAGE } from "@/lib/seo";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -37,6 +38,11 @@ export const metadata: Metadata = {
     locale: "es_ES",
     siteName: "Kietel Revenue",
     url: SITE_URL,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_IMAGE.url],
   },
 };
 

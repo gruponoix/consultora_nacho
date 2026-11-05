@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Arrow } from "@/components/icons";
 import { ChannelMixChart, HotelComparisonChart } from "@/components/blog/Charts";
 import RevenueManagerInfographic from "@/components/blog/RevenueManagerInfographic";
+import { OG_IMAGE } from "@/lib/seo";
 import heroImg from "@/public/images/blog-dashboard.jpg";
 
 // Copy and layout from the client's article PDF (docs/BLOGS 1 (1).pdf), including its SEO brief.
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
     title: "¿Qué es el Revenue Management y cómo puede aumentar la rentabilidad de tu hotel?",
     description:
       "Descubre qué es el Revenue Management y cómo una estrategia de precios, demanda y distribución puede aumentar la rentabilidad de tu hotel.",
+    images: [OG_IMAGE],
   },
 };
 

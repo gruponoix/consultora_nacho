@@ -3,6 +3,7 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Interactions from "@/components/Interactions";
 import GoogleTag from "@/components/GoogleTag";
+import AnalyticsEvents from "@/components/AnalyticsEvents";
 import CookieConsent from "@/components/CookieConsent";
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { CONTACT } from "@/lib/contact";
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Interactions />
         <CookieConsent />
+        <AnalyticsEvents />
         <GoogleTag />
       </body>
     </html>

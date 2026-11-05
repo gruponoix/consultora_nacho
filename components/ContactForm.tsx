@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Arrow, Check } from "./icons";
 import { CONTACT } from "@/lib/contact";
 import { SERVICE_OPTIONS } from "@/lib/serviceOptions";
+import { track } from "@/lib/analytics";
 
 type Errors = { name?: boolean; hotel?: boolean; email?: boolean; web?: boolean; servicio?: boolean };
 
@@ -12,6 +13,13 @@ export default function ContactForm() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
+  const started = useRef(false);
+
+  const onStart = () => {
+    if (started.current) return;
+    started.current = true;
+    track("form_start", { form_name: "diagnostico" });
+  };
 
   const clearError = (key: keyof Errors) =>
     setErrors((e) => (e[key] ? { ...e, [key]: false } : e));
@@ -38,6 +46,7 @@ export default function ContactForm() {
     if (next.name || next.hotel || next.email || next.web || next.servicio) {
       const firstKey = (["name", "hotel", "email", "web", "servicio"] as const).find((k) => next[k]);
       if (firstKey) form.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
+      track("form_error", { form_name: "diagnostico", error_type: "validation", error_field: firstKey });
       return;
     }
     setSending(true);
@@ -57,8 +66,10 @@ export default function ContactForm() {
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
+      track("generate_lead", { form_name: "diagnostico", service: servicio });
       setSent(true);
     } catch {
+      track("form_error", { form_name: "diagnostico", error_type: "server" });
       setFailed(true);
     } finally {
       setSending(false);
@@ -84,7 +95,7 @@ export default function ContactForm() {
 
   return (
     <div className="form-card">
-      <form onSubmit={onSubmit} noValidate>
+      <form onSubmit={onSubmit} onFocus={onStart} noValidate>
         <h3>Solicita tu diagnóstico</h3>
         <p>Completa el formulario y nos pondremos en contacto contigo.</p>
 

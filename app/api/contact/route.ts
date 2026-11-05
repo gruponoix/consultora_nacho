@@ -11,7 +11,7 @@ import { SERVICE_OPTIONS } from "@/lib/serviceOptions";
 const FROM_INTERNAL = "Web Kietel Revenue <web@kietelrevenue.com>";
 // Sent from a real, monitored mailbox: spam filters (Outlook/Hotmail especially)
 // distrust senders that can't receive mail.
-const FROM_CONFIRMATION = `Ignacio Góngora · Kietel Revenue <${CONTACT.email}>`;
+const FROM_CONFIRMATION = `Kietel Revenue <${CONTACT.email}>`;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

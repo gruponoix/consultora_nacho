@@ -1,5 +1,6 @@
 import { LinkedIn, Instagram } from "./icons";
 import { SERVICES } from "@/lib/services";
+import { CONTACT } from "@/lib/contact";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -44,8 +45,9 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Contacto</h4>
             <ul>
-              <li><a href="mailto:hola@keitelrevenue.com">hola@keitelrevenue.com</a></li>
-              <li><a href="#">Málaga, España</a></li>
+              <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+              <li><a href={CONTACT.phoneHref}>{CONTACT.phone}</a></li>
+              <li><span>{CONTACT.city}</span></li>
               <li><a href="/contacto">Diagnóstico gratuito</a></li>
             </ul>
           </div>

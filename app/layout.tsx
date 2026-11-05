@@ -3,6 +3,7 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Interactions from "@/components/Interactions";
 import { OG_IMAGE } from "@/lib/seo";
+import { CONTACT } from "@/lib/contact";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -52,6 +53,8 @@ const jsonLd = {
   name: "Kietel Revenue",
   description:
     "Consultora hotelera premium especializada en externalización, consultoría y gestión operativa para hoteles independientes y cadenas hoteleras.",
+  email: CONTACT.email,
+  telephone: CONTACT.phoneHref.replace("tel:", ""),
   areaServed: "Internacional",
   knowsLanguage: ["es", "en"],
   founder: { "@type": "Person", name: "Ignacio Góngora Espada", jobTitle: "CEO & Fundador" },

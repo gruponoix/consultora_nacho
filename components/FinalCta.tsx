@@ -1,5 +1,6 @@
 import ContactForm from "./ContactForm";
-import { Check } from "./icons";
+import { Check, Mail, Phone } from "./icons";
+import { CONTACT } from "@/lib/contact";
 
 const PERKS = [
   "Análisis inicial personalizado",
@@ -25,6 +26,15 @@ export default function FinalCta() {
               </li>
             ))}
           </ul>
+          <div className="final__contact">
+            <p>¿Prefieres hablar directamente?</p>
+            <a href={`mailto:${CONTACT.email}`}>
+              <Mail aria-hidden="true" /> {CONTACT.email}
+            </a>
+            <a href={CONTACT.phoneHref}>
+              <Phone aria-hidden="true" /> {CONTACT.phone}
+            </a>
+          </div>
         </div>
         <div className="reveal" data-d="1">
           <ContactForm />

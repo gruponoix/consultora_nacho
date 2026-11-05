@@ -2,17 +2,20 @@
 
 import { useState } from "react";
 import { Arrow, Check } from "./icons";
+import { CONTACT } from "@/lib/contact";
 
 type Errors = { name?: boolean; hotel?: boolean; email?: boolean; web?: boolean };
 
 export default function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const clearError = (key: keyof Errors) =>
     setErrors((e) => (e[key] ? { ...e, [key]: false } : e));
 
-  const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
     const form = ev.currentTarget;
     const data = new FormData(form);
@@ -34,8 +37,28 @@ export default function ContactForm() {
       if (firstKey) form.querySelector<HTMLInputElement>(`[name="${firstKey}"]`)?.focus();
       return;
     }
-    // Wire this up to your backend / email service (e.g. /api/contact).
-    setSent(true);
+    setSending(true);
+    setFailed(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          hotel,
+          email,
+          web,
+          mejorar: String(data.get("mejorar") || "").trim(),
+          company: String(data.get("company") || ""),
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setSent(true);
+    } catch {
+      setFailed(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   if (sent) {
@@ -124,9 +147,21 @@ export default function ContactForm() {
           />
         </div>
 
-        <button type="submit" className="btn btn--gold">
-          Solicitar diagnóstico gratuito <Arrow />
+        {/* Honeypot: hidden from people, bots fill it in. */}
+        <div className="form-hp" aria-hidden="true">
+          <label htmlFor="f-company">Empresa</label>
+          <input type="text" id="f-company" name="company" tabIndex={-1} autoComplete="off" />
+        </div>
+
+        <button type="submit" className="btn btn--gold" disabled={sending}>
+          {sending ? "Enviando…" : <>Solicitar diagnóstico gratuito <Arrow /></>}
         </button>
+        {failed && (
+          <p className="form-error" role="alert">
+            No hemos podido enviar tu solicitud. Inténtalo de nuevo o escríbenos a{" "}
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+          </p>
+        )}
         <p className="form-legal">
           Al enviar aceptas nuestra política de privacidad. Tus datos se tratan con confidencialidad
           y nunca se comparten con terceros.

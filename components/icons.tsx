@@ -29,6 +29,19 @@ export const MapPin = (props: IconProps) => (
   </svg>
 );
 
+export const Mail = (props: IconProps) => (
+  <svg {...base({ strokeWidth: 1.8, ...props })}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="M3 7l9 6 9-6" />
+  </svg>
+);
+
+export const Phone = (props: IconProps) => (
+  <svg {...base({ strokeWidth: 1.8, ...props })}>
+    <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z" />
+  </svg>
+);
+
 /* ---- Offers ---- */
 export const Building = (props: IconProps) => (
   <svg {...base(props)}>

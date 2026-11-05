@@ -1,3 +1,5 @@
+export const SITE_URL = "https://www.kietelrevenue.com";
+
 // Shared social-preview image (WhatsApp, LinkedIn, X…). Pages that define their own
 // `openGraph` replace the root one entirely, so they must include this explicitly.
 export const OG_IMAGE = {

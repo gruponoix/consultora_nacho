@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Interactions from "@/components/Interactions";
-import { OG_IMAGE } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { CONTACT } from "@/lib/contact";
 
 const playfair = Playfair_Display({
@@ -12,8 +12,6 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   display: "swap",
 });
-
-const SITE_URL = "https://www.kietelrevenue.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "¿Hay una duración mínima de colaboración?",
-    a: "Depende del servicio. Los proyectos puntuales tienen inicio y fin definidos. Para externalización y gestión operativa recomendamos un mínimo de seis meses, el tiempo necesario para implantar cambios y ver resultados sostenidos, pero siempre lo adaptamos a tu situación.",
+    a: "Depende del servicio. Los proyectos puntuales tienen inicio y fin definidos. Para Revenue Management 360° y Revenue Management Partner recomendamos un mínimo de seis meses, el tiempo necesario para implantar cambios y ver resultados sostenidos, pero siempre lo adaptamos a tu situación.",
   },
 ];
 

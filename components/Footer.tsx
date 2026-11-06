@@ -14,7 +14,7 @@ export default function Footer() {
               KIETEL <small>Revenue</small>
             </span>
             <p>
-              Consultoría, externalización y gestión operativa para hoteles que quieren crecer con
+              Revenue Management para hoteles y apartamentos turísticos que quieren crecer con
               criterio y rentabilidad.
             </p>
             <div className="footer-social">

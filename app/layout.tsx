@@ -18,25 +18,25 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Kietel Revenue · Consultoría y gestión hotelera premium en Málaga",
+  title: "Kietel Revenue · Revenue Management para hoteles",
   description:
-    "Consultora hotelera premium. Externalización, consultoría y gestión operativa para hoteles independientes y cadenas que buscan aumentar ingresos, optimizar costes y mejorar resultados. Solicita tu diagnóstico gratuito.",
+    "Consultora de Revenue Management para hoteles y apartamentos turísticos en toda España. Gestionamos, acompañamos o auditamos tu estrategia de precios, distribución y demanda para aumentar tu rentabilidad. Solicita tu diagnóstico gratuito.",
   keywords: [
-    "consultoría hotelera",
-    "externalización hotelera",
-    "gestión operativa hoteles",
-    "revenue management",
-    "consultor hotelero Málaga",
-    "aumentar ingresos hotel",
+    "revenue management hotelero",
+    "revenue management España",
+    "consultoría revenue management",
+    "revenue manager externo",
+    "estrategia de precios hotel",
+    "aumentar rentabilidad hotel",
   ],
   authors: [{ name: "Kietel Revenue" }],
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
-    title: "Kietel Revenue · Consultoría hotelera premium",
+    title: "Kietel Revenue · Revenue Management para hoteles",
     description:
-      "Impulsamos la rentabilidad y el crecimiento de hoteles independientes y cadenas hoteleras.",
+      "Impulsamos la rentabilidad de hoteles y apartamentos turísticos con estrategia de precios, distribución y demanda.",
     locale: "es_ES",
     siteName: "Kietel Revenue",
     url: SITE_URL,
@@ -53,10 +53,10 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "Kietel Revenue",
   description:
-    "Consultora hotelera premium especializada en externalización, consultoría y gestión operativa para hoteles independientes y cadenas hoteleras.",
+    "Consultora de Revenue Management para hoteles y apartamentos turísticos: gestión externalizada, acompañamiento a equipos propios, proyectos específicos y auditorías.",
   email: CONTACT.email,
   telephone: CONTACT.phoneHref.replace("tel:", ""),
-  areaServed: "Internacional",
+  areaServed: { "@type": "Country", name: "España" },
   knowsLanguage: ["es", "en"],
   founder: { "@type": "Person", name: "Ignacio Góngora Espada", jobTitle: "CEO & Fundador" },
   address: { "@type": "PostalAddress", addressLocality: "Málaga", addressCountry: "ES" },
